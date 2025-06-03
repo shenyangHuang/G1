@@ -1,0 +1,72 @@
+{
+    "task_class": {
+        "integer": [
+            "connected_component_number",
+            "weakly_connected_number",
+            "degree",
+            "radius",
+            "triangles",
+            "local_connectivity",
+            "diameter",
+            "isolate_number",
+            "edge_number",
+            "node_number",
+            "strongly_connected_number"
+        ],
+        "set": [
+            "dominating_set",
+            "common_neighbor",
+            "maximal_independent_set",
+            "min_vertex_cover",
+            "center",
+            "barycenter",
+            "neighbor"
+        ],
+        "ordered_set": [
+            "topological_sort",
+            "shortest_path",
+            "weighted_shortest_path"
+            ],
+        "bool": [
+            "has_cycle",
+            "edge_existence",
+            "triangle_detection",
+            "is_strongly_connected",
+            "is_eularian",
+            "is_bipartite"
+        ],
+        "float": [
+            "global_efficiency",
+            "effective_size",
+            "transitivity",
+            "degree_assortativity",
+            "closeness_centrality",
+            "adamic_adar_index",
+            "degree_centrality",
+            "resource_allocation_index",
+            "jaccard_coefficient",
+            "constraint",
+            "wiener_index",
+            "avg_neighbor_degree", 
+            "density",
+            "harmonic_centrality", 
+            "betweenness_centrality"
+        ], 
+        "pair_set": [
+            "minimum_spanning_tree",
+            "weighted_minimum_spanning_tree",
+            "bridges", 
+            "min_edge_covering",
+            "bfs",
+            "dfs"
+        ]
+    },
+    "prompt_class": {
+        "integer": "",
+        "set": "You need to format your answer as a list of nodes in ascending order, e.g., [node-1, node-2, ..., node-n].",
+        "ordered_set": "You need to format your answer as a list of nodes, e.g., [node-1, node-2, ..., node-n].",
+        "bool": "Your answer should be Yes or No.",
+        "float": "You need to format your answer as a float number.",
+        "pair_set": "You need to format your answer as a list of edges in ascending dictionary order, e.g., [(u1, v1), (u2, v2), ..., (un, vn)]."
+    }
+}
