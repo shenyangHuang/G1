@@ -231,6 +231,7 @@ Follow these steps to reproduce our G1 implementation:
     actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu
     actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu
     ```
+    See [Performance Tuning Guide](https://verl.readthedocs.io/en/latest/perf/perf_tuning.html) for more instructions.
  - Set `trainer.n_gpus_per_node` to your actual GPU count.
 
 
