@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -e
+
+ENV_NAME="g1-env"
+PYTHON_VERSION="3.10"
+
+echo "🛠 Create and activate uv environment"
+uv venv --python $PYTHON_VERSION .venv
+source .venv/bin/activate
+
+echo "📦 Installing core dependencies via uv pip"
+
+# SGLang & Torch memory saver (from custom links)
+uv pip install "sglang[all]==0.4.6.post1" --find-links https://flashinfer.ai/whl/cu124/torch2.6/flashinfer-python
+uv pip install torch-memory-saver
+
+# vLLM and PyTorch stack — note: may need PyTorch index
+uv pip install vllm==0.8.5.post1
+uv pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 tensordict==0.6.2 torchdata
+
+# Basic packages
+uv pip install \
+    "transformers[hf_xet]>=4.51.0" accelerate datasets peft hf-transfer \
+    "numpy<2.0.0" "pyarrow>=15.0.0" pandas \
+    "ray[default]" codetiming hydra-core pylatexenc qwen-vl-utils \
+    wandb dill pybind11 liger-kernel mathruler \
+    pytest py-spy pyext pre-commit ruff
+
+# Other utilities
+uv pip install \
+    "nvidia-ml-py>=12.560.30" \
+    "fastapi[standard]>=0.115.0" \
+    "optree>=0.13.0" \
+    "pydantic>=2.9" \
+    "grpcio>=1.62.1"
+
+echo "📥 Install FlashAttention & FlashInfer wheels manually"
+# Download if needed, then install
+uv pip install ./flash_attn-2.7.4.post1+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+uv pip install ./flashinfer_python-0.2.2.post1+cu124torch2.6-cp38-abi3-linux_x86_64.whl
+
+echo "🔧 Megatron & TransformerEngine (Git installs)"
+uv pip install --no-deps git+https://github.com/NVIDIA/TransformerEngine.git@v2.2
+uv pip install --no-deps git+https://github.com/NVIDIA/Megatron-LM.git@core_v0.12.0rc3
+
+echo "📸 OpenCV"
+uv pip install opencv-python opencv-fixer
+
+# Run fixer
+python - << 'EOF'
+from opencv_fixer import AutoFix
+AutoFix()
+EOF
+
+echo "🧠 Install CUDA-linked CUDNN wheel"
+uv pip install nvidia-cudnn-cu12==9.8.0.87
+
+echo "🎉 All done!"
