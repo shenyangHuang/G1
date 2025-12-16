@@ -2,3 +2,4 @@
 *.whl
 *.pyc
 *.cpython-310.pyc
+*.log

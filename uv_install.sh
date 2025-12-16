@@ -58,5 +58,6 @@ uv pip install nvidia-cudnn-cu12==9.8.0.87
 echo "🔧 Megatron & TransformerEngine (Git installs)"
 uv pip install --no-deps git+https://github.com/NVIDIA/Megatron-LM.git@core_v0.12.0rc3
 
+uv pip install -U "opentelemetry-api" "opentelemetry-sdk" "opentelemetry-exporter-otlp"
 
 echo "🎉 All done!"
