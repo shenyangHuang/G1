@@ -126,19 +126,25 @@ Our implementation is based on the library [verl](https://github.com/volcengine/
 
 verl supports various backends. Currently, the following configurations are available: **FSDP** and **Megatron-LM** (optional) for training. **SGLang**, **vLLM** and **TGI** for rollout generation. For more information, please check the documents of [verl](https://verl.readthedocs.io/en/latest/start/install.html).
 
-2. For installing the dependencies, we recommend to use a fresh new conda environment:
+<!-- 2. For installing the dependencies, we recommend to use a fresh new conda environment:
 ```bash
 conda create -n verl python==3.10
 conda activate verl
+``` -->
+
+2. For installing the dependencies, I have modified to use a uv environment
+```bash
+source uv_install.sh
 ```
-3. Then, execute the install.sh script that we provided in the repository:
+
+<!-- 3. Then, execute the install.sh script that we provided in the repository:
 ```bash
 # Make sure you have activated verl conda env
 # If you need to run with megatron
 bash install.sh
 # Or if you simply need to run with FSDP
 USE_MEGATRON=0 bash install.sh
-```
+``` -->
 
 If you encounter any issues during installation, please refer to the [Installation Guide](https://verl.readthedocs.io/en/latest/start/install.html#) provided by Verl. If problems persist, don’t hesitate to [report them to us](https://github.com/PKU-ML/G1/issues).
 

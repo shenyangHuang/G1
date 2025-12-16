@@ -36,12 +36,11 @@ uv pip install \
 
 echo "📥 Install FlashAttention & FlashInfer wheels manually"
 # Download if needed, then install
-uv pip install ./flash_attn-2.7.4.post1+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
-uv pip install ./flashinfer_python-0.2.2.post1+cu124torch2.6-cp38-abi3-linux_x86_64.whl
+wget -nv https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl && \
+    uv pip install --no-cache-dir flash_attn-2.7.4.post1+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
 
-echo "🔧 Megatron & TransformerEngine (Git installs)"
-uv pip install --no-deps git+https://github.com/NVIDIA/TransformerEngine.git@v2.2
-uv pip install --no-deps git+https://github.com/NVIDIA/Megatron-LM.git@core_v0.12.0rc3
+wget -nv https://github.com/flashinfer-ai/flashinfer/releases/download/v0.2.2.post1/flashinfer_python-0.2.2.post1+cu124torch2.6-cp38-abi3-linux_x86_64.whl && \
+    uv pip install --no-cache-dir flashinfer_python-0.2.2.post1+cu124torch2.6-cp38-abi3-linux_x86_64.whl
 
 echo "📸 OpenCV"
 uv pip install opencv-python opencv-fixer
@@ -54,5 +53,10 @@ EOF
 
 echo "🧠 Install CUDA-linked CUDNN wheel"
 uv pip install nvidia-cudnn-cu12==9.8.0.87
+
+
+echo "🔧 Megatron & TransformerEngine (Git installs)"
+uv pip install --no-deps git+https://github.com/NVIDIA/Megatron-LM.git@core_v0.12.0rc3
+
 
 echo "🎉 All done!"

@@ -1,0 +1,4 @@
+*.cpython
+*.whl
+*.pyc
+*.cpython-310.pyc
