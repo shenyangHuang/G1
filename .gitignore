@@ -4,3 +4,4 @@
 *.cpython-310.pyc
 *.log
 *.yaml
+*.out
